@@ -1,0 +1,6 @@
+\frametitle{Introduction}\framesubtitle {Figures}
+\begin{itemize}
+\item \verb+\usepackage{graphicx}+
+\item jpg, png, pdf, eps, ps
+\end{itemize}
+\includegraphics[height=3cm]{./figures/ucylogo.pdf}

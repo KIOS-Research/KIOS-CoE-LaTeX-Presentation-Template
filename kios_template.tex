@@ -1,0 +1,258 @@
+%RUN WITH PDFLATEX OR XELATEX. USE PDF FIGURES
+
+\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+\let\Tiny=\tiny
+\usepackage[T1]{fontenc} 
+
+\def\abs#1{\mathopen| #1 \mathclose|}	% use instead of $|x|$ 
+\def\norm#1{\mathopen\| #1 \mathclose\|}% use instead of $\|x\|$ 
+%\pdfminorversion=7
+
+%\usepackage{fix-cm}
+
+%\usepackage{graphicx}
+\setbeamercovered{transparent}
+
+%REQUIRED TO REMOVE ERRORS BY BEAMER WITH LATEX
+% add a  blank file ``pgfbaseimage.sty'' 
+%\let\Tiny=\tiny
+\providecommand\thispdfpagelabel[1]{}
+%\usepackage{lmodern}
+
+%% COMMENT OUT IF NOT USING XELATEX
+%\usepackage{xltxtra, url}  % loads fixltx2e, etex, xunicode, fontspec
+%\usepackage{xgreek}   % for greek documents
+%\setsansfont[Mapping=tex-text]{Calibri}
+
+%% LOAD THEME
+\usetheme{default}
+
+%% MODIFY THEME FOR KIOS COLOURS
+% Add logos at bottom
+\pgfdeclareimage[height=1cm]{left-logo}{./figures/ucylogo.pdf}
+\pgfdeclareimage[height=1cm]{right-logo}{./figures/kios.pdf}
+\logo{\pgfuseimage{right-logo}}
+\setbeamertemplate{sidebar left}
+{
+\logo{\pgfuseimage{left-logo}}
+\vfill%
+\rlap{\hskip0.1cm\insertlogo}%
+\vskip5pt%
+}
+\definecolor{red}{rgb}{0.8235,0.1294,0.2039}
+\definecolor{kiosorange}{rgb}{0.9686,0.5765,0.1137}
+\definecolor{kiosgray}{rgb}{0.5020,0.5098,0.5216}
+\definecolor{kiosyellow}{rgb}{0.9725,0.9216,0.12552}
+\setbeamerfont{title}{size=\Large,series=\bfseries}
+\setbeamercolor{title}{fg=red}
+\setbeamercolor{frametitle}{fg=red}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{framesubtitle}{shape=\itshape}
+\setbeamercolor{framesubtitle}{fg=red}
+\setbeamercolor{item}{fg=kiosorange}
+\setbeamerfont{item}{series=\bfseries}
+\setbeamercolor{block body}{bg=kiosyellow}
+\setbeamercolor{block title}{bg=kiosorange, fg=black}
+\setbeamercolor{part name}{fg=kiosorange}
+\setbeamercolor{part title}{fg=red}
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamercolor{button}{use=local structure,bg=kiosorange,fg=red}
+\setbeamercolor{button border}{use=button,fg=button.bg}
+
+% Navigation
+\setbeamertemplate{navigation symbols}{} % suppresses all navigation symbols:
+
+%Blocks
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HERE IS WHERE YOU BEGIN!
+
+\title[Short title]{Long Presentation Title}
+\subtitle{Do I need a subtitle}
+\author{Achimedes Euclid}
+\institute{
+KIOS Research Center for Intelligent Systems and Networks\\
+Dept. of Electrical and Computer Engineering\\
+University of Cyprus
+%\and
+%\inst{}KIOS Research Center for Intelligent Systems and Networks
+}
+\date{Conf. Name\\Date}
+
+
+%\setbeamertemplate{footline}[text line]{\parbox{\linewidth}{\vspace*{-20pt} \hfill\insertshortauthor\hfill\insertpagenumber}}
+
+
+%http://www.haptonstahl.org/latex/basics_formatting.php
+
+\setbeamertemplate{footline}[text line]{\parbox{\linewidth}{\vspace*{-20pt}\centerline{Text goes here.}}}
+
+
+
+%% Page numbers etc
+%\setbeamertemplate{footline}[frame number] % add page number
+%\usefoottemplate{\hfill \insertframenumber{} / 75} %\inserttotalframenumber
+%\setbeamertemplate{footline}{\raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[10pt]{\scriptsize\insertframenumber}}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% IF XGREEK is used, then uncomment to set US/UK Keywords and Hyphenations
+%\setlanguage{american}
+
+
+%Make Title frame
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%Acknowledge early and correctly
+\begin{frame} 
+\frametitle{Acknowledgments}
+	\begin{columns}
+		\begin{column}{7cm}
+		This work has been partially funded by
+			\begin{itemize}
+			\item \textit{Cyprus Research Promotion Foundation}
+			\item \textit{University of Cyprus}
+			\end{itemize}
+		With the collaboration of
+			\begin{itemize}
+			\item \textit{ACB}
+			\item \textit{CDF}
+			\end{itemize}		
+		\end{column}	
+		\begin{column}{3cm}
+			\begin{figure}
+			\includegraphics[totalheight=1.5cm]{./figures/ipe.pdf} 
+			\end{figure}
+			\begin{figure}
+			\includegraphics[totalheight=1.5cm]{./figures/ucylogo.pdf} 
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+
+%Presentation Outline. I do it manually
+\begin{frame}{Outline}
+	\begin{itemize}
+	\item Introduction
+	\item ...
+	\item Conclusions
+\end{itemize}	
+\end{frame}
+
+% First part: Introduction
+\part{Introduction}
+\frame{\partpage}
+%
+
+%
+\begin{frame}[fragile]{Introduction}{Alerts and Code}
+\begin{itemize}
+\item Basic structure: part, section, subsection, subsubsection.
+\item \verb+\alert{Highlight}+ for word \alert{Highlight}
+\end{itemize}
+Enter code using 
+\begin{itemize}
+\item  \verb+\begin{frame}[fragile]{...}{...}+
+\item \verb+\begin{verbatim} ...paste code... \end{verbatim}+
+\end{itemize}
+\end{frame}	
+
+\begin{frame}[fragile]{Introduction}
+\begin{center}Centered text!\end{center}
+\begin{itemize}
+    \item \verb+\begin{center}...\end{center}+ 
+\end{itemize}
+\end{frame}	
+
+\begin{frame}[fragile]{Introduction}{Pauses}
+\begin{verbatim}
+    \begin{enumerate}
+        \item First bullet\pause
+        \item Second bullet\pause
+        \item Third bullet
+    \end{enumerate}
+\end{verbatim}
+    \begin{enumerate}
+        \item First bullet\pause
+        \item Second bullet\pause
+        \item Third bullet
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Introduction}{Overlays (4 in 1)!} 
+\begin{itemize}
+		\item \alert{Alert on all slides}
+		\item \alert<2>{Alert on slide 2}
+		\item \alert<3>{Alert on slide 3}
+		\item \alert<1,3>{Alert on slides 1 and 3}
+		\item \alert<-2,4>{Alert on slides 1,2 and 4}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Introduction}{2 columns}
+\begin{columns}
+\column{.5\textwidth}
+Left column. You can add anything in here!
+\column{.5\textwidth}
+Right column. You can add anything in here!
+\end{columns}
+\end{frame}
+
+\part{Blocks}
+\frame{\partpage}
+
+\begin{frame}[fragile]{Introduction}{Blocks}
+\begin{verbatim}
+\begin{block}{Block title}
+The project contributions could be written here!
+\end{block}
+\end{verbatim}
+\begin{block}{Block title}
+The project contributions could be written here!
+\end{block}
+\end{frame}
+%
+
+\begin{frame}[fragile]{Introduction}{2-column block}
+\begin{columns}
+\column{.5\textwidth}
+\begin{block}{Block title}
+Left column. You can add anything in here!
+\end{block}
+\column{.5\textwidth}
+\begin{block}{Block title}
+Right column. You can add anything in here!
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Introduction}{Figures}
+\begin{itemize}
+	\item \verb+\usepackage{graphicx}+
+	\item jpg, png, pdf, eps, ps
+\end{itemize}
+\includegraphics[height=3cm]{./figures/ucylogo.pdf}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+      Thank you!
+    \end{center}
+  \end{frame}
+	
+%\setcounter{framenumber}{\value{finalframe}}
+
+\end{document}
