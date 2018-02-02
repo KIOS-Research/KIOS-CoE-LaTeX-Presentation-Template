@@ -1,21 +1,22 @@
-% Copyright 2007 by Till Tantau
-%
-% This file may be distributed and/or modified
-%
-% 1. under the LaTeX Project Public License and/or
-% 2. under the GNU Public License.
-%
-% See the file doc/licenses/LICENSE for more details.
-
-%\ProvidesPackageRCS $Header: /home/vedranm/bitbucket/beamer/base/themes/theme/beamerthemedefault.sty,v d02a7cf4d8ae 2010/06/17 09:11:41 rivanvx $
-
-
 \mode<presentation>
 
-\usefonttheme{kios}
-\usecolortheme{kios}
+% Requirement
+\RequirePackage{tikz}
+
+% Settings
 \useinnertheme{kios}
 \useoutertheme{kios}
+\usecolortheme{kios}
 
-\mode
-<all>
+\setbeamertemplate{blocks}[rounded][shadow=true]  
+\setbeamertemplate{itemize item}{\scriptsize$\blacksquare$}
+\setbeamertemplate{itemize subitem}{\scriptsize$\blacktriangleright$}
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{block title}{bg=black!30!red,fg=gray!10}
+\setbeamercolor{block body}{fg=black!30!gray,bg=gray!10}
+\setbeamerfont{block title}{series=\bfseries}
+
+\setbeamerfont{description item}{series=\bfseries}
+
+\mode<all>
