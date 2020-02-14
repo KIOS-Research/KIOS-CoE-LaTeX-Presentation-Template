@@ -1,10 +1,9 @@
-\documentclass[hyperref={pdfpagelabels=false}]{beamer}
+\documentclass[hyperref={pdfpagelabels=false},aspectratio=169]{beamer}
+%\documentclass[hyperref={pdfpagelabels=false},aspectratio=43]{beamer} 
 \let\Tiny=\tiny
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc}
-\title{There Is No Largest Prime Number}
-\date[ISPN ’80]{27th International Symposium of Prime Numbers}
-\author[Euclid]{Euclid of Alexandria \texttt{euclid@alexandria.edu}}
+
 
 \usetheme{kios}
 
@@ -16,174 +15,145 @@
 \setbeamercolor{part title}{fg=red}
 \setbeamercolor{button}{use=local structure,bg=kiosorange,fg=red}
 \setbeamercolor{button border}{use=button,fg=button.bg}
+\usepackage{algorithm,algpseudocode}
+
+
+\setbeamertemplate{navigation symbols}{} % Remove control butttons from the bottom
+
+
+\usepackage{fancybox}
+
+\usepackage{tabto} % for the \tab command
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xspace}
+
+\usepackage{listings} % PACKAGE FOR CODE INPUT IN DOCUMENT
+
+\usepackage{expl3}
+\ExplSyntaxOn
+\int_zero_new:N \g__prg_map_int 
+\ExplSyntaxOff
+
+\usepackage{tikz}
+\usetikzlibrary{tikzmark,decorations.pathreplacing,calligraphy,decorations.markings,arrows.meta,shapes.arrows}
+
+\newcommand{\latex}{\LaTeX\xspace}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\setbeamertemplate{bibliography item}[text]
+
+
+% ADD THE FOLLOWING COUPLE LINES INTO YOUR PREAMBLE
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+	\OLDthebibliography{#1}
+	\setlength{\parskip}{-5pt}
+
+}
+\usepackage{ragged2e}
+\usepackage{etoolbox}
+
+\apptocmd{\frame}{}{\justifying}{} % Allow optional arguments after frame.
+
+
+\bibliographystyle{plain}
+
+
+
+\setbeamercovered{transparent}
+
 
 \begin{document}
-\setbeamertemplate{navigation symbols}{}
+
+
+\title[] {Title of Presentation}
+
+\author[]{\underline{First Author}\inst{1} \and 
+		Second Author\inst{2} \and 
+		Third Author\inst{1} \and  
+		Fourth Author\inst{1}}
+
+\institute[]{\inst{1} KIOS Research and Innovation Center of Excellence and the Department of Electrical and Computer Engineering, University of Cyprus, Cyprus \and \inst{2} Department of Electrical and Computer Engineering, Imperial College, London}%
+
+\subtitle{Conference Title}
+
+\date{Date of presentation}
+
+
+\begin{frame}[fragile,plain]
+	\maketitle
+\end{frame}
+
+
 \begin{frame}
-\titlepage
+	Part I: Title of Part 1
+	
+	\tableofcontents[part=1,hideallsubsections]
+	Part II: Title of Part 2
+	\tableofcontents[part=2,hideallsubsections]
 \end{frame}
-\setbeamertemplate{navigation symbols}[default]
 
 
+%\setbeamertemplate{section in toc}[square]
+%\begin{frame}{Outline}
+%	 \tableofcontents[hideallsubsections]
+%\end{frame}
+
+\part{Title of Part 1}
+\frame{\partpage}
+\section{Introduction}
 \begin{frame}
-\frametitle{There Is No Largest Prime Number} 
-\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
-\begin{theorem}
-There is no largest prime number.  \end{theorem} 
-\begin{enumerate} 
-\item<1-| alert@1> Suppose $p$ were the largest prime number. 
-\item<2-> Let $q$ be the product of the first $p$ numbers. 
-\item<3-> Then $q+1$ is not divisible by any of them. 
-\item<1-> But $q + 1$ is \color{KIOSred}greater\color{KIOSgray}\ than $1$, thus divisible by some prime
-number not in the first $p$ numbers.
-
-\end{enumerate}
-
-\begin{itemize}
-	\item one
-	\item two \begin{itemize}
-		\item three
-		\item four
-	\end{itemize}
-\end{itemize} 
-\end{frame}
-
-%Acknowledge early and correctly
-\begin{frame} 
-\frametitle{Acknowledgments}
-	\begin{columns}
-		\begin{column}{7cm}
-		This work has been partially funded by
-			\begin{itemize}
-			\item \textit{Cyprus Research Promotion Foundation}
-			\item \textit{University of Cyprus}
-			\end{itemize}
-		With the collaboration of
-			\begin{itemize}
-			\item \textit{ACB}
-			\item \textit{CDF}
-			\end{itemize}		
-		\end{column}	
-		\begin{column}{3cm}
-
-			\begin{figure}
-			\includegraphics[totalheight=1.5cm]{./figures/ucylogo.pdf} 
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-
-
-%Presentation Outline. I do it manually
-\begin{frame}{Outline}
+	\frametitle{There Is No Largest Prime Number} 
+	\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
+	\begin{theorem}
+		There is no largest prime number.  \end{theorem} 
+	\begin{enumerate} 
+		\item<1-| alert@1> Suppose $p$ were the largest prime number. 
+		\item<2-> Let $q$ be the product of the first $p$ numbers. 
+		\item<3-> Then $q+1$ is not divisible by any of them. 
+		\item<1-> But $q + 1$ is \color{KIOSred}greater\color{KIOSgray}\ than $1$, thus divisible by some prime
+		number not in the first $p$ numbers.
+		
+	\end{enumerate}
+	
 	\begin{itemize}
-	\item Introduction
-	\item ...
-	\item Conclusions
-\end{itemize}	
+		\item one
+		\item two 
+		\begin{itemize}
+			\item three
+			\item four
+		\end{itemize}
+	\end{itemize} 
 \end{frame}
 
-% First part: Introduction
-\part{Introduction}
+\part{Title of Part 2}
 \frame{\partpage}
-%
+\section{Problem Formulation}
+\begin{frame} {Block Examples}
+	\begin{alertblock}{Alert Block}
+		\begin{itemize}
+			\item Item 1
+			\item Item 2
+			\item \alert{Alerted text}
+	\end{itemize}	
+\end{alertblock}
+	\begin{example}{Example Block}
+	\begin{itemize}
+		\item Item 1
+		\item Item 2
+		\item \alert{Alerted text}
+	\end{itemize}	
+\end{example}
 
-%
-\begin{frame}[fragile]{Introduction}{Alerts and Code}
-\begin{itemize}
-\item Basic structure: part, section, subsection, subsubsection.
-\item \verb+\alert{Highlight}+ for word \alert{Highlight}
-\end{itemize}
-Enter code using 
-\begin{itemize}
-\item  \verb+\begin{frame}[fragile]{...}{...}+
-\item \verb+\begin{verbatim} ...paste code... \end{verbatim}+
-\end{itemize}
-\end{frame}	
-
-\begin{frame}[fragile]{Introduction}
-\begin{center}Centered text!\end{center}
-\begin{itemize}
-    \item \verb+\begin{center}...\end{center}+ 
-\end{itemize}
-\end{frame}	
-
-\begin{frame}[fragile]{Introduction}{Pauses}
-\begin{verbatim}
-    \begin{enumerate}
-        \item First bullet\pause
-        \item Second bullet\pause
-        \item Third bullet
-    \end{enumerate}
-\end{verbatim}
-    \begin{enumerate}
-        \item First bullet\pause
-        \item Second bullet\pause
-        \item Third bullet
-    \end{enumerate}
-\end{frame}
-
-\begin{frame}{Introduction}{Overlays (4 in 1)!} 
-\begin{itemize}
-		\item \alert{Alert on all slides}
-		\item \alert<2>{Alert on slide 2}
-		\item \alert<3>{Alert on slide 3}
-		\item \alert<1,3>{Alert on slides 1 and 3}
-		\item \alert<-2,4>{Alert on slides 1,2 and 4}
-\end{itemize}
 \end{frame}
 
 
-\begin{frame}{Introduction}{2 columns}
-\begin{columns}
-\column{.5\textwidth}
-Left column. You can add anything in here!
-\column{.5\textwidth}
-Right column. You can add anything in here!
-\end{columns}
-\end{frame}
 
-\part{Blocks}
-\frame{\partpage}
 
-\begin{frame}[fragile]{Introduction}{Blocks}
-\begin{verbatim}
-\begin{block}{Block title}
-The project contributions could be written here!
-\end{block}
-\end{verbatim}
-\begin{block}{Block title}
-The project contributions could be written here!
-\end{block}
-\end{frame}
-%
-
-\begin{frame}[fragile]{Introduction}{2-column block}
-\begin{columns}
-\column{.5\textwidth}
-\begin{block}{Block title}
-Left column. You can add anything in here!
-\end{block}
-\column{.5\textwidth}
-\begin{block}{Block title}
-Right column. You can add anything in here!
-\end{block}
-\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]{Introduction}{Figures}
-\begin{itemize}
-	\item \verb+\usepackage{graphicx}+
-	\item jpg, png, pdf, eps, ps
-\end{itemize}
-\includegraphics[height=3cm]{./figures/ucylogo.pdf}
-\end{frame}
-
-\begin{frame}
-    \begin{center}
-      Thank you!
-    \end{center}
-  \end{frame}
 
 \end{document}

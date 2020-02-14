@@ -4,11 +4,9 @@
 \defbeamertemplate*{frametitle}{kios}[1][]
 {
 \ifx\insertframesubtitle\@empty%
- \vskip0.1cm%
-\begin{beamercolorbox}[wd=12cm,leftskip=0.05\textwidth,#1]{frametitle}
+\begin{beamercolorbox}[wd=14cm,#1]{frametitle}
 	\textbf{\insertframetitle}\par%
 \end{beamercolorbox}%
-\vskip0.5cm%
 \else
 \begin{beamercolorbox}[wd=12cm,leftskip=0.05\textwidth,#1]{frametitle}
 	\textbf{\insertframetitle}\par%
@@ -16,8 +14,7 @@
 %\vskip0.1cm%
 \begin{beamercolorbox}[wd=12cm,leftskip=0.05\textwidth,#1]{framesubtitle}
 	\textbf{\small\insertframesubtitle}%
-\end{beamercolorbox}
-\vskip0.2cm%
+\end{beamercolorbox}%
 \fi
 }
 
