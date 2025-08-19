@@ -8,15 +8,30 @@
 \useoutertheme{kios}
 \usecolortheme{kios}
 
-\setbeamertemplate{blocks}[rounded][shadow=true]  
-\setbeamertemplate{itemize item}{\scriptsize$\blacksquare$}
-\setbeamertemplate{itemize subitem}{\scriptsize$\blacktriangleright$}
+% alert block colors
+
+\setbeamertemplate{blocks}[rounded][shadow=true] 
+
+\usecolortheme{orchid} % The theme for the example and alert blocks
+
+\setbeamerfont{alerted text}{series=\bfseries}% \alert{some text} --> bold red 
+
+
+
+\setbeamertemplate{itemize item}[square]
+\setbeamertemplate{itemize subitem}[circle]
 \setbeamertemplate{navigation symbols}{}
 
-\setbeamercolor{block title}{bg=black!30!red,fg=gray!10}
-\setbeamercolor{block body}{fg=black!30!gray,bg=gray!10}
+%\setbeamercolor{block title}{bg=blue!60!black,fg=gray!20}
+%\setbeamercolor{block body}{fg=black!30!gray,bg=gray!20}
 \setbeamerfont{block title}{series=\bfseries}
 
+\usefonttheme{serif}
 \setbeamerfont{description item}{series=\bfseries}
+\setbeamerfont{frame title}{size=\LARGE,series=\bfseries}
+
+\setbeamerfont{normal text}{size=\normal} 
+%\setbeamerfont{alerted text}{color=red}
+\setbeamerfont{example text}{}
 
 \mode<all>

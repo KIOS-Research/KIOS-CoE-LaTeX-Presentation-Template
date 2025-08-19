@@ -1,38 +1,43 @@
 \mode<presentation>
-
+\definecolor{KIOSorange}{rgb}{0.9686,0.5765,0.1137}
 \setbeamertemplate{background}{
   \begin{tikzpicture}
   \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  
+  
+  % Example: \ifthenelse{ condition}{True}{False}
+  \ifthenelse{%
+  	\lengthtest{\beamer@paperwidth=16cm}}% condition (16cm is the width of the frame with an aspect ratio = 16:9)
+  { % Setup for apsect ratio 16:9
   \ifnum\thepage>1
   
   %% Main body background
   
-  	\node[inner sep=0pt,anchor=north west] (eye_candy_3) at (0,1.05*\the\paperheight)	{\includegraphics[width=.075\textwidth]{media/eye_candy_3}};
+  	\node[inner sep=0pt,anchor=north west] (eye_candy_3) at (0,1.3*\the\paperheight)	{\includegraphics[width=.075\textwidth]{media/eye_candy_3}};
   	
   	\node[inner sep=0pt] (eye_candy_1) at (\the\paperwidth,\the\paperheight)	{\includegraphics[width=.4\textwidth]{media/eye_candy_1}};
   	
   	\node[inner xsep=0pt,inner ysep=7pt,anchor=south west] (kios_logo) at (0.05,0.5)	{\includegraphics[height=.068\textwidth,angle=90]{media/kios_logo}};
   
-  	\fill[color=black!30!red] (0,0) rectangle (\the\paperwidth,0.4);
-  	\node[white,anchor=south west] at (0,-0.1) {\scriptsize \textbf{www.kios.ucy.ac.cy}};
-  	
-  	\node[white,anchor=south east] at (\the\paperwidth,-0.05) {\scriptsize \textbf{\insertframenumber\ of \inserttotalframenumber}};
-  	
-%  	\node[white,anchor=south] at (0.5*\the\paperwidth,-0.05) {\scriptsize \textbf{\insertauthor}};
-  	
+  	\fill[color=black!5!gray] (0,0) rectangle (\the\paperwidth,0.5);
+  	 
+  	 \node[white,outer sep=-1pt,anchor=south west] at (current page.south west) {\scriptsize \textbf{www.kios.ucy.ac.cy}};
 
+  	\node[white,outer sep=-1pt,anchor=south east] at (current page.south east) {\scriptsize\textbf{\insertframenumber / \inserttotalframenumber}};
+  	\node[white,anchor=south] at (current page.south) {\scriptsize \insertsubtitle};
+  	  	
   
   \else
   
   %% Title page background
   	
-  	\node[inner sep=0pt,anchor=north west] (eye_candy_2) at (0,1.043*\the\paperheight)	{\includegraphics[width=.3\textwidth]{media/eye_candy_2}};
+  	\node[inner sep=0pt,anchor=north west] (eye_candy_2) at (0,1.09*\the\paperheight)	{\includegraphics[height=0.85\textheight,width=.25\textwidth]{media/eye_candy_2}};
   	
   	\node[inner sep=0pt,anchor=north east] (kios_logo_2) at (0.98*\the\paperwidth,0.98*\the\paperheight)	{\includegraphics[height=.2\textheight]{media/kios_logo_2}};
   	
-  	 \node[inner sep=0pt,anchor=south west] (imperial_logo) at (0.01*\the\paperwidth,0.01*\the\paperheight)	{\includegraphics[width=.3\textwidth]{media/imperial_logo}};
+  	 \node[inner sep=0pt,anchor=south west] (imperial_logo) at (0.01*\the\paperwidth,0.01*\the\paperheight)	{\includegraphics[width=.25\textwidth]{media/imperial_logo}};
   	  	
-  	\node[inner xsep=0,inner ysep=0.01*\the\paperheight,anchor=south west] (ucy_logo) at (imperial_logo.north west) {\includegraphics[width=.3\textwidth]{media/ucy_logo}};
+  	\node[inner xsep=0,inner ysep=0.01*\the\paperheight,anchor=south west] (ucy_logo) at (imperial_logo.north west) {\includegraphics[width=.25\textwidth]{media/ucy_logo}};
   	
   	\node[inner sep=0pt,anchor=south east] (eu_logo) at (0.99*\the\paperwidth,0.01*\the\paperheight) {\includegraphics[height=.175\textheight]{media/eu_logo}};
   	 
@@ -40,37 +45,105 @@
 	
 	\node[inner xsep=0,inner ysep=2pt,anchor=south west] at (cy_logo.north west) {\textbf{Funded by:}};
 	
-	\draw[line width=5mm,white!50!gray] (kios_logo_2.south west) ++ (-2.7cm,0.15cm) -- ++ (-3.6cm,0);
+	\draw[line width=5mm,white!50!gray] (kios_logo_2.south west) ++ (-4.7cm,0.15cm) -- ++ (-3.6cm,0);
 	
-	\draw[line width=0.75mm,black!30!red] (kios_logo_2.south west) ++ (-0.3cm,0.15cm) -- ++ (-5.7cm,0);
-
+	\draw[line width=0.75mm,black!30!red] (kios_logo_2.south west) ++ (-0.3cm,0.15cm) -- ++ (-6.7cm,0);
+	
+	\node[outer sep=2pt,anchor=south] (date) at (current page.south) {\footnotesize \insertdate};
+	
+	\node[KIOSorange!90!black,outer sep=6pt,anchor=south] at (date.north) {\small \insertsubtitle};
+	
   \fi
+	}
+  	{ % Setup for apsect ratios other than 16:9
+    \ifnum\thepage>1
+    
+    %% Main body background
+   
+   	\node[inner sep=0pt,anchor=north west] (eye_candy_3) at (0,0.995*\the\paperheight)	{\includegraphics[width=.075\textwidth]{media/eye_candy_3}};
+   
+   	\node[inner sep=0pt] (eye_candy_1) at (\the\paperwidth,\the\paperheight)	{\includegraphics[width=.4\textwidth]{media/eye_candy_1}};
+   
+  	\node[inner xsep=0pt,inner ysep=7pt,anchor=south west] (kios_logo) at (0.05,0.5)	{\includegraphics[height=.068\textwidth,angle=90]{media/kios_logo}};
+   
+  	\fill[color=black!5!gray] (0,0) rectangle (\the\paperwidth,0.5);
+    
+    \node[white,outer sep=-1pt,anchor=south west] at (current page.south west) {\scriptsize \textbf{www.kios.ucy.ac.cy}};
+    
+    \node[white,outer sep=-1pt,anchor=south east] at (current page.south east) {\scriptsize \textbf{\insertframenumber / \inserttotalframenumber}};
+  	\node[white,anchor=south] at (current page.south) {\scriptsize \insertsubtitle};
+    
+    
+    \else
+    
+    %% Title page background
+    
+   \node[inner sep=0pt,anchor=north west] (eye_candy_2) at (0,1*\the\paperheight)	{\includegraphics[width=.3\textwidth]{media/eye_candy_2}};
+   
+   \node[inner sep=0pt,anchor=north east] (kios_logo_2) at (0.98*\the\paperwidth,0.98*\the\paperheight)	{\includegraphics[height=.2\textheight]{media/kios_logo_2}};
+   
+   \node[inner sep=0pt,anchor=south west] (imperial_logo) at (0.01*\the\paperwidth,0.01*\the\paperheight)	{\includegraphics[width=.3\textwidth]{media/imperial_logo}};
+   
+   \node[inner xsep=0,inner ysep=0.01*\the\paperheight,anchor=south west] (ucy_logo) at (imperial_logo.north west) {\includegraphics[width=.3\textwidth]{media/ucy_logo}};
+   
+   \node[inner sep=0pt,anchor=south east] (eu_logo) at (0.99*\the\paperwidth,0.01*\the\paperheight) {\includegraphics[height=.145\textheight]{media/eu_logo}};
+   
+   \node[inner xsep=0.01*\the\paperwidth,inner ysep=0,anchor=south east] (cy_logo) at (eu_logo.south west) {\includegraphics[height=.145\textheight]{media/cy_logo}};
+   
+   \node[inner xsep=0,inner ysep=2pt,anchor=south west] at (cy_logo.north west) {\textbf{Funded by:}};
+   
+   \draw[line width=5mm,white!50!gray] (kios_logo_2.south west) ++ (-2.7cm,0.15cm) -- ++ (-3.6cm,0);
+   
+   \draw[line width=0.75mm,black!30!red] (kios_logo_2.south west) ++ (-0.3cm,0.15cm) -- ++ (-5.7cm,0);
+     
+   \node[anchor=south] (date) at (current page.south) {\footnotesize \insertdate};
+   
+   \node[KIOSorange!90!black,outer sep=8pt,anchor=south] at (date.north) {\small \insertsubtitle};
+    
+    
+    \fi
+
+	}
+  
+  
   \end{tikzpicture}
 }
 
-% Title page
-\defbeamertemplate*{title page}{kios}[1][]
-{ 
-   \vskip1.5cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=.3\textwidth,#1]{title page header}
-      \usebeamerfont{title}\textbf{\inserttitle}\par%
-    \end{beamercolorbox}%
-    \vskip0.75cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=.3\textwidth,#1]{author}
-      \usebeamerfont{author}\textbf{\insertauthor}%
-    \end{beamercolorbox}
-
-%	\begin{tikzpicture}
-%	\useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-%	\node[white,anchor=south east] at (0.5*\the\paperwidth,-0.05) {\scriptsize \textbf{\insertframenumber\ of \inserttotalframenumber}};
-%	\end{tikzpicture}
-
-     \vskip0.2cm%
-    \begin{beamercolorbox}[wd=12cm,leftskip=.3\textwidth,#1]{date}
-      \usebeamerfont{author}\insertdate%
-    \end{beamercolorbox}
-  \vfill
-}
-
+		% Title page
+		\defbeamertemplate*{title page}{kios}[1][]
+		{ 
+			\ifthenelse{\lengthtest{\beamer@paperwidth=16cm}}% condition (16cm is the width of the frame with an aspect ratio = 16:9)
+			{ % Setup for apsect ratio 16:9
+			   \vskip1.8cm%
+			    \begin{beamercolorbox}[sep=0.2em,wd=14.5cm,leftskip=.18\textwidth,#1]{Title page header}
+			      \usebeamerfont{title}{\Large \textbf{\textsc{\inserttitle}}}\par%
+			    \end{beamercolorbox}%
+			    \vskip0.4cm%
+			    \begin{beamercolorbox}[sep=0.2em,wd=14.5cm,leftskip=0.18\textwidth,#1]{Author}
+			      \usebeamerfont{author}{\small\textbf{\insertauthor}}%
+			    \end{beamercolorbox}%
+				 \vskip0.3cm%
+				\begin{beamercolorbox}[sep=0.1em,wd=14cm,leftskip=.18\textwidth,#1]{Institute}
+					{\scriptsize\insertinstitute}%
+				\end{beamercolorbox}%
+				 \vskip0.6cm%
+			\vfill
+			}	
+			{ % Setup for apsect ratios other than 16:9
+			   \vskip2.2cm%
+				\begin{beamercolorbox}[wd=11cm,leftskip=.25\textwidth,#1]{title page header}
+					\usebeamerfont{title}{\Large \textbf{\textsc{\inserttitle}}}\par%
+				\end{beamercolorbox}%
+			    \vskip0.4cm%
+				\begin{beamercolorbox}[wd=11cm,leftskip=.25\textwidth,#1]{author}
+					\usebeamerfont{author}{\small \textbf{\insertauthor}}%
+				\end{beamercolorbox}
+				\vskip0.3cm%
+				\begin{beamercolorbox}[sep=0.1em,wd=11cm,leftskip=.25\textwidth,#1]{Institute}
+					{\scriptsize\insertinstitute}%
+				\end{beamercolorbox}%
+				\vfill			
+			}
+		}
 \mode
 <all>
